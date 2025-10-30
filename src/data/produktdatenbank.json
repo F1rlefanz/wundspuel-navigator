@@ -1,0 +1,226 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-10-28",
+    "description": "Vollständige Produktdatenbank aller Antiseptika und Wundspüllösungen"
+  },
+  "produkte": {
+    "octenisept": {
+      "id": "octenisept",
+      "name": "Octenisept®",
+      "wirkstoff": "Octenidin 0,1% + Phenoxyethanol",
+      "hersteller": "Schülke & Mayr",
+      "kategorie": "Antiseptikum",
+      "farbe": "from-blue-500 to-cyan-600",
+      "eigenschaften": {
+        "wirkspektrum": ["Bakterien", "MRSA", "VRE", "Pilze", "Viren"],
+        "einwirkzeit": "30-60 Sekunden",
+        "brennt": false,
+        "farblos": true,
+        "gewebeverträglich": "Sehr gut",
+        "biofilm": "Gut wirksam"
+      },
+      "indikationen": [
+        "Akute infizierte Wunden",
+        "MRSA-Infektionen",
+        "Chronische Wunden mit Infektion",
+        "Schleimhautantiseptik"
+      ],
+      "kontraindikationen": [
+        "Nicht in Körperhöhlen",
+        "Nicht am Auge",
+        "Nicht gleichzeitig mit PVP-Iod"
+      ],
+      "anwendung": "Aufsprühen oder betupfen, 1-2 Min. Einwirkzeit",
+      "darreichung": ["Spray 250ml", "Lösung 1000ml"],
+      "kosten": "€€ (mittel)"
+    },
+    "lavasept": {
+      "id": "lavasept",
+      "name": "Lavasept®",
+      "wirkstoff": "Polihexanid (PHMB) 0,04%",
+      "hersteller": "B. Braun",
+      "kategorie": "Antiseptikum",
+      "farbe": "from-teal-500 to-green-600",
+      "eigenschaften": {
+        "wirkspektrum": ["Bakterien", "Pilze", "teilw. Viren"],
+        "einwirkzeit": "10-15 Minuten",
+        "brennt": false,
+        "farblos": true,
+        "gewebeverträglich": "Exzellent",
+        "biofilm": "Sehr gut wirksam"
+      },
+      "indikationen": ["Chronische Wunden", "Dekubitus", "Ulcus cruris", "Langzeitanwendung"],
+      "kontraindikationen": ["Nicht mit Seife/Detergenzien kombinieren"],
+      "anwendung": "Spülen oder getränkte Kompresse 15 Min.",
+      "darreichung": ["Lösung 350ml", "Lösung 1000ml"],
+      "kosten": "€€ (mittel)"
+    },
+    "prontosan": {
+      "id": "prontosan",
+      "name": "Prontosan®",
+      "wirkstoff": "Polihexanid (PHMB) 0,1% + Betain",
+      "hersteller": "B. Braun",
+      "kategorie": "Wundspüllösung",
+      "farbe": "from-emerald-500 to-teal-600",
+      "eigenschaften": {
+        "wirkspektrum": ["Bakterien", "Pilze", "Biofilm"],
+        "einwirkzeit": "15-20 Minuten",
+        "brennt": false,
+        "farblos": true,
+        "gewebeverträglich": "Exzellent",
+        "biofilm": "Beste Wirkung"
+      },
+      "indikationen": ["Biofilm-Verdacht", "Chronische Wunden", "Dekubitus", "Diabetischer Fuß"],
+      "kontraindikationen": ["Keine bekannt bei bestimmungsgemäßer Anwendung"],
+      "anwendung": "Intensive Spülung, Kompresse 15-20 Min.",
+      "darreichung": ["Lösung 350ml", "Gel 30ml"],
+      "kosten": "€€€ (teuer, aber sehr effektiv)"
+    },
+    "ringer": {
+      "id": "ringer",
+      "name": "Ringer-Lösung",
+      "wirkstoff": "Elektrolytlösung (physiologisch)",
+      "hersteller": "Diverse",
+      "kategorie": "Spüllösung",
+      "farbe": "from-gray-300 to-gray-400",
+      "eigenschaften": {
+        "wirkspektrum": ["Keine antimikrobielle Wirkung"],
+        "einwirkzeit": "Nicht relevant",
+        "brennt": false,
+        "farblos": true,
+        "gewebeverträglich": "Perfekt (isotonisch)",
+        "biofilm": "Keine Wirkung"
+      },
+      "indikationen": ["Saubere Wunden", "Mechanische Reinigung", "Spülung ohne Antiseptik-Bedarf"],
+      "kontraindikationen": ["Keine"],
+      "anwendung": "Großzügige Spülung, körperwarm",
+      "darreichung": ["Plastikflasche 500ml", "Glasflasche 1000ml"],
+      "kosten": "€ (günstig)"
+    },
+    "nacl": {
+      "id": "nacl",
+      "name": "NaCl 0,9%",
+      "wirkstoff": "Natriumchlorid 0,9%",
+      "hersteller": "Diverse",
+      "kategorie": "Spüllösung",
+      "farbe": "from-gray-300 to-gray-400",
+      "eigenschaften": {
+        "wirkspektrum": ["Keine antimikrobielle Wirkung"],
+        "einwirkzeit": "Nicht relevant",
+        "brennt": false,
+        "farblos": true,
+        "gewebeverträglich": "Perfekt (isotonisch)",
+        "biofilm": "Keine Wirkung"
+      },
+      "indikationen": ["Saubere Wunden", "Mechanische Reinigung", "OP-Wunden"],
+      "kontraindikationen": ["Keine"],
+      "anwendung": "Spülung, körperwarm",
+      "darreichung": ["Plastikflasche 100-500ml", "Ampullen 20ml"],
+      "kosten": "€ (sehr günstig)"
+    },
+    "pvp_iod": {
+      "id": "pvp_iod",
+      "name": "PVP-Iod (Betaisodona®)",
+      "wirkstoff": "Povidon-Iod 10%",
+      "hersteller": "Mundipharma",
+      "kategorie": "Antiseptikum",
+      "farbe": "from-amber-600 to-orange-700",
+      "eigenschaften": {
+        "wirkspektrum": ["Bakterien", "Viren", "Pilze", "Sporen"],
+        "einwirkzeit": "1-2 Minuten",
+        "brennt": true,
+        "farblos": false,
+        "gewebeverträglich": "Mäßig (zytotoxisch)",
+        "biofilm": "Gut"
+      },
+      "indikationen": ["Stark verschmutzte Wunden (initial)", "Präoperative Hautdesinfektion"],
+      "kontraindikationen": [
+        "Schilddrüsenerkrankungen",
+        "Schwangerschaft/Stillzeit",
+        "Neugeborene",
+        "Nicht bei chronischen Wunden (Langzeit)",
+        "Allergien gegen Iod"
+      ],
+      "anwendung": "Initial auftragen, dann abwaschen oder mit anderen Antiseptika wechseln",
+      "darreichung": ["Lösung 100ml", "Salbe 25g"],
+      "kosten": "€ (günstig)"
+    },
+    "chlorhexidin": {
+      "id": "chlorhexidin",
+      "name": "Chlorhexidin",
+      "wirkstoff": "Chlorhexidindigluconat 0,05-0,2%",
+      "hersteller": "Diverse",
+      "kategorie": "Antiseptikum",
+      "farbe": "from-pink-400 to-rose-500",
+      "eigenschaften": {
+        "wirkspektrum": ["Bakterien", "begrenzt Pilze"],
+        "einwirkzeit": "30-60 Sekunden",
+        "brennt": false,
+        "farblos": true,
+        "gewebeverträglich": "Gut",
+        "biofilm": "Mäßig"
+      },
+      "indikationen": ["Hautdesinfektion", "Schleimhautantiseptik"],
+      "kontraindikationen": [
+        "Nicht an Ohren/Augen",
+        "Resistenzentwicklung möglich",
+        "Nicht in offenen Wunden (Wundranddesinfektion OK)"
+      ],
+      "anwendung": "Eher für intakte Haut, nicht primär für Wunden",
+      "darreichung": ["Lösung diverse Größen"],
+      "kosten": "€ (günstig)"
+    },
+    "silber": {
+      "id": "silber",
+      "name": "Silber-Präparate",
+      "wirkstoff": "Silberionen (diverse Formulierungen)",
+      "hersteller": "Diverse (z.B. Acticoat, Aquacel Ag)",
+      "kategorie": "Wundauflage mit Antiseptik",
+      "farbe": "from-slate-400 to-gray-500",
+      "eigenschaften": {
+        "wirkspektrum": ["Bakterien", "MRSA", "Pilze"],
+        "einwirkzeit": "Kontinuierlich über mehrere Tage",
+        "brennt": false,
+        "farblos": false,
+        "gewebeverträglich": "Gut",
+        "biofilm": "Mäßig bis gut"
+      },
+      "indikationen": ["Stark exsudierende infizierte Wunden", "MRSA", "Verbrennungen"],
+      "kontraindikationen": [
+        "Nicht langfristig (>2 Wochen)",
+        "MRT-Untersuchungen",
+        "Silber-Allergie (selten)"
+      ],
+      "anwendung": "Als Wundauflage für mehrere Tage",
+      "darreichung": ["Auflagen diverse Größen"],
+      "kosten": "€€€ (teuer)"
+    }
+  },
+  "wirkstoffe": {
+    "octenidin": {
+      "name": "Octenidin",
+      "klasse": "Kationisches oberflächenaktives Antiseptikum",
+      "wirkmechanismus": "Störung der Zellmembran",
+      "resistenz": "Keine bekannt"
+    },
+    "polihexanid": {
+      "name": "Polihexanid (PHMB)",
+      "klasse": "Polymeres Biguanid",
+      "wirkmechanismus": "Membranschädigung, Biofilm-Penetration",
+      "resistenz": "Keine bekannt"
+    },
+    "iod": {
+      "name": "Povidon-Iod",
+      "klasse": "Halogene",
+      "wirkmechanismus": "Oxidation von Proteinen/Nukleinsäuren",
+      "resistenz": "Keine Resistenz, aber zytotoxisch"
+    },
+    "chlorhexidin": {
+      "name": "Chlorhexidin",
+      "klasse": "Bisbiguanid",
+      "wirkmechanismus": "Membranschädigung",
+      "resistenz": "Möglich bei Langzeitanwendung"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SVG to PNG Converter</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #1e293b; color: white; }
+    button { padding: 10px 20px; margin: 10px; font-size: 16px; cursor: pointer; }
+    canvas { border: 1px solid #ccc; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>🎨 SVG to PNG Converter</h1>
+  <button onclick="convertIcon(192)">Generate 192x192 PNG</button>
+  <button onclick="convertIcon(512)">Generate 512x512 PNG</button>
+  <div id="preview"></div>
+
+  <script>
+    const svg512 = `<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad512)"/>
+  <g transform="translate(256, 256)">
+    <rect x="-40" y="-140" width="80" height="280" rx="20" fill="white" opacity="0.95"/>
+    <rect x="-140" y="-40" width="280" height="80" rx="20" fill="white" opacity="0.95"/>
+  </g>
+  <path d="M 256 100 Q 220 140, 220 170 Q 220 210, 256 220 Q 292 210, 292 170 Q 292 140, 256 100 Z" 
+        fill="white" opacity="0.25"/>
+  <path d="M 200 360 Q 185 380, 185 395 Q 185 415, 200 422 Q 215 415, 215 395 Q 215 380, 200 360 Z" 
+        fill="white" opacity="0.2"/>
+  <path d="M 312 360 Q 297 380, 297 395 Q 297 415, 312 422 Q 327 415, 327 395 Q 327 380, 312 360 Z" 
+        fill="white" opacity="0.2"/>
+</svg>`;
+
+    function convertIcon(size) {
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+
+      const img = new Image();
+      const blob = new Blob([svg512], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, size, size);
+        URL.revokeObjectURL(url);
+
+        // Download
+        canvas.toBlob(function(pngBlob) {
+          const link = document.createElement('a');
+          link.download = `pwa-${size}x${size}.png`;
+          link.href = URL.createObjectURL(pngBlob);
+          link.click();
+        });
+
+        // Preview
+        document.getElementById('preview').innerHTML += 
+          `<div><h3>${size}x${size}</h3><canvas id="prev${size}"></canvas></div>`;
+        const prevCanvas = document.getElementById('prev' + size);
+        prevCanvas.width = size;
+        prevCanvas.height = size;
+        prevCanvas.getContext('2d').drawImage(img, 0, 0, size, size);
+      };
+
+      img.src = url;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-10-28",
+    "description": "Vollständiger medizinischer Entscheidungsbaum für Wundspül-Navigator",
+    "totalNodes": 21,
+    "assessmentNodes": 1,
+    "conditionNodes": 8,
+    "solutionNodes": 12
+  },
+  "decisionTree": {
+    "start": {
+      "nodeId": "start",
+      "question": "Welche Art von Wunde liegt vor?",
+      "type": "assessment",
+      "info": "Die Unterscheidung zwischen akuten und chronischen Wunden ist entscheidend für die Wahl der richtigen Antiseptika und Spüllösungen.",
+      "options": [
+        {
+          "label": "Akute Wunde",
+          "sublabel": "Frische Verletzung, Trauma, OP-Wunde",
+          "next": "akut_klassifikation",
+          "color": "from-rose-400 to-pink-500"
+        },
+        {
+          "label": "Chronische Wunde",
+          "sublabel": "Dekubitus, Ulcus, Diabetischer Fuß",
+          "next": "chronisch_klassifikation",
+          "color": "from-amber-400 to-orange-500"
+        }
+      ]
+    },
+    "akut_klassifikation": {
+      "nodeId": "akut_klassifikation",
+      "question": "Wie ist der Kontaminationsgrad der akuten Wunde?",
+      "type": "condition",
+      "info": "Die Beurteilung der Wundkontamination bestimmt die Intensität der antiseptischen Behandlung.",
+      "options": [
+        {
+          "label": "Sauber/Kontaminiert",
+          "sublabel": "Keine sichtbare Verschmutzung, OP-Wunde",
+          "next": "akut_sauber",
+          "color": "from-emerald-400 to-green-500"
+        },
+        {
+          "label": "Infiziert",
+          "sublabel": "Entzündungszeichen, Eiter, Rötung",
+          "next": "akut_infiziert",
+          "color": "from-rose-500 to-red-600"
+        },
+        {
+          "label": "Stark verschmutzt",
+          "sublabel": "Erde, Fremdkörper, tiefe Kontamination",
+          "next": "akut_verschmutzt",
+          "color": "from-purple-500 to-indigo-600"
+        }
+      ]
+    },
+    "akut_sauber": {
+      "nodeId": "akut_sauber",
+      "question": "Primäre Empfehlung für saubere akute Wunden",
+      "type": "solution",
+      "result": {
+        "primary": "Ringer-Lösung oder NaCl 0,9%",
+        "reason": "Bei sauberen Wunden reicht mechanische Reinigung mit physiologischer Lösung. Antiseptika nur bei erhöhtem Infektionsrisiko.",
+        "application": "Spülung mit 20-50ml, sterile Technik, bei Bedarf Wundauflage",
+        "alternative": "Octenisept® (bei erhöhtem Infektionsrisiko)",
+        "duration": "Einmalige Anwendung zur Wundreinigung",
+        "frequency": "Bei jedem Verbandwechsel",
+        "contraindications": [
+          "Keine bei korrekter Anwendung",
+          "Auf Temperatur achten (körperwarm)"
+        ],
+        "color": "from-emerald-400 to-green-500"
+      }
+    },
+    "akut_infiziert": {
+      "nodeId": "akut_infiziert",
+      "question": "Liegt eine MRSA-Infektion oder -Risiko vor?",
+      "type": "condition",
+      "info": "MRSA (Methicillin-resistenter Staphylococcus aureus) erfordert spezielle Antiseptika mit nachgewiesener MRSA-Wirksamkeit.",
+      "options": [
+        {
+          "label": "Ja, MRSA",
+          "sublabel": "Nachgewiesen oder hohes Risiko",
+          "next": "akut_infiziert_mrsa",
+          "color": "from-red-500 to-rose-600"
+        },
+        {
+          "label": "Nein, Standard-Infektion",
+          "sublabel": "Normale bakterielle Infektion",
+          "next": "akut_infiziert_standard",
+          "color": "from-orange-400 to-amber-500"
+        }
+      ]
+    },
+    "akut_infiziert_mrsa": {
+      "nodeId": "akut_infiziert_mrsa",
+      "question": "Primäre Empfehlung bei MRSA-Infektion",
+      "type": "solution",
+      "result": {
+        "primary": "Octenisept®",
+        "reason": "Breites Wirkspektrum inkl. MRSA, keine Resistenzentwicklung, schnelle Wirkung (30 Sekunden), gute Gewebeverträglichkeit",
+        "application": "Großzügig aufsprühen/auftragen, 1-2 Minuten Einwirkzeit, nicht abwischen",
+        "alternative": "Lavasept® (Polihexanid 0,04%)",
+        "duration": "Bis zur Infektionsfreiheit (üblicherweise 7-14 Tage)",
+        "frequency": "2-3x täglich bei jedem Verbandwechsel",
+        "contraindications": [
+          "Nicht in Körperhöhlen anwenden",
+          "Nicht am Auge verwenden",
+          "Nicht gleichzeitig mit PVP-Iod"
+        ],
+        "color": "from-red-500 to-rose-600"
+      }
+    },
+    "akut_infiziert_standard": {
+      "nodeId": "akut_infiziert_standard",
+      "question": "Primäre Empfehlung bei Standard-Infektion",
+      "type": "solution",
+      "result": {
+        "primary": "Octenisept® oder Lavasept®",
+        "reason": "Beide zeigen gute Wirksamkeit gegen gängige Wundinfektionen, ohne schmerzhafte Anwendung",
+        "application": "Wunde gründlich spülen oder betupfen, Einwirkzeit beachten (1-2 Min.)",
+        "alternative": "Prontosan® (bei Biofilm-Verdacht)",
+        "duration": "Bis Infektionszeichen abklingen (5-10 Tage)",
+        "frequency": "2x täglich bei Verbandwechsel",
+        "contraindications": [
+          "Überempfindlichkeit gegen Wirkstoffe",
+          "Bei Schmerzen: auf alternatives Produkt wechseln"
+        ],
+        "color": "from-orange-400 to-amber-500"
+      }
+    },
+    "akut_verschmutzt": {
+      "nodeId": "akut_verschmutzt",
+      "question": "Primäre Empfehlung bei verschmutzten Wunden",
+      "type": "solution",
+      "result": {
+        "primary": "Mechanische Reinigung mit Ringer + Octenisept®",
+        "reason": "Verschmutzte Wunden benötigen zunächst mechanische Reinigung, dann Antiseptik zur Infektionsprophylaxe",
+        "application": "1. Spülung mit Ringer (100-500ml unter Druck), 2. Débridement falls nötig, 3. Octenisept® auftragen",
+        "alternative": "PVP-Iod bei sehr starker Verschmutzung",
+        "duration": "Initial-Reinigung, dann nach Infektionsstatus",
+        "frequency": "Initial intensiv, dann täglich für 3-5 Tage",
+        "contraindications": [
+          "Vorsicht bei Tetanus-Risiko (Impfstatus prüfen!)",
+          "Bei Fremdkörpern: chirurgisches Débridement"
+        ],
+        "color": "from-purple-500 to-indigo-600"
+      }
+    },
+    "chronisch_klassifikation": {
+      "nodeId": "chronisch_klassifikation",
+      "question": "Um welche Art chronische Wunde handelt es sich?",
+      "type": "condition",
+      "info": "Verschiedene chronische Wundtypen haben unterschiedliche Ursachen und erfordern angepasste Behandlungsstrategien.",
+      "options": [
+        {
+          "label": "Dekubitus",
+          "sublabel": "Druckgeschwür, Grad I-IV",
+          "next": "chronisch_dekubitus",
+          "color": "from-amber-400 to-orange-500"
+        },
+        {
+          "label": "Ulcus cruris",
+          "sublabel": "Venös/arteriell/gemischt",
+          "next": "chronisch_ulcus",
+          "color": "from-blue-400 to-cyan-500"
+        },
+        {
+          "label": "Diabetischer Fuß",
+          "sublabel": "Neuropathisch/ischämisch",
+          "next": "chronisch_diabetisch",
+          "color": "from-violet-400 to-purple-500"
+        }
+      ]
+    },
+    "chronisch_dekubitus": {
+      "nodeId": "chronisch_dekubitus",
+      "question": "Welcher Dekubitus-Grad liegt vor?",
+      "type": "condition",
+      "info": "Die Dekubitus-Kategorie bestimmt die Intensität der Wundbehandlung.",
+      "options": [
+        {
+          "label": "Grad I-II",
+          "sublabel": "Oberflächlich, intakte/teilweise Haut",
+          "next": "dekubitus_oberflächlich",
+          "color": "from-yellow-400 to-amber-400"
+        },
+        {
+          "label": "Grad III-IV",
+          "sublabel": "Tief, Muskel/Knochen betroffen",
+          "next": "dekubitus_tief",
+          "color": "from-red-500 to-rose-600"
+        }
+      ]
+    },
+    "dekubitus_oberflächlich": {
+      "nodeId": "dekubitus_oberflächlich",
+      "question": "Primäre Empfehlung bei oberflächlichem Dekubitus",
+      "type": "solution",
+      "result": {
+        "primary": "Prontosan® oder Lavasept®",
+        "reason": "Polihexanid-basierte Lösungen sind ideal für chronische Wunden: gewebeschonend, biofilmwirksam, schmerzfrei",
+        "application": "Wunde spülen (20-40ml), getränkte Kompresse für 15 Min., feuchte Wundauflage",
+        "alternative": "Octenisept® (bei Infektionszeichen)",
+        "duration": "Langfristig bis zur Heilung (Wochen bis Monate)",
+        "frequency": "1-2x täglich je nach Exsudation",
+        "contraindications": [
+          "Wichtig: Druckentlastung ist ESSENTIELL!",
+          "Ohne Druckentlastung keine Heilung möglich"
+        ],
+        "color": "from-yellow-400 to-amber-400"
+      }
+    },
+    "dekubitus_tief": {
+      "nodeId": "dekubitus_tief",
+      "question": "Liegt eine Infektion vor?",
+      "type": "condition",
+      "info": "Tiefe Dekubiti sind häufig infiziert und benötigen intensive antiseptische Behandlung.",
+      "options": [
+        {
+          "label": "Ja, infiziert",
+          "sublabel": "Entzündungszeichen, Geruch, Fieber",
+          "next": "dekubitus_tief_infiziert",
+          "color": "from-red-600 to-rose-700"
+        },
+        {
+          "label": "Nein, nicht infiziert",
+          "sublabel": "Sauber granulierend",
+          "next": "dekubitus_tief_sauber",
+          "color": "from-emerald-500 to-green-600"
+        }
+      ]
+    },
+    "dekubitus_tief_infiziert": {
+      "nodeId": "dekubitus_tief_infiziert",
+      "question": "Primäre Empfehlung bei infiziertem tiefem Dekubitus",
+      "type": "solution",
+      "result": {
+        "primary": "Octenisept® + chirurgisches Débridement",
+        "reason": "Tiefe infizierte Wunden benötigen aggressive Infektionskontrolle + Nekrosenentfernung. Oft systemische Antibiotika nötig.",
+        "application": "Chirurgisches Débridement, dann großzügig Octenisept®, Tamponade bei Taschen, spezialisierte Auflagen",
+        "alternative": "PVP-Iod initial, dann Polihexanid zur Erhaltung",
+        "duration": "Initial-Sanierung, dann Langzeitbehandlung",
+        "frequency": "Initial täglich, dann alle 2-3 Tage",
+        "contraindications": [
+          "⚠️ ACHTUNG: Oft chirurgische/plastische Deckung nötig",
+          "Systemische Antibiotika-Therapie prüfen!",
+          "Ernährungsstatus optimieren (Protein!)"
+        ],
+        "color": "from-red-600 to-rose-700"
+      }
+    },
+    "dekubitus_tief_sauber": {
+      "nodeId": "dekubitus_tief_sauber",
+      "question": "Primäre Empfehlung bei sauberem tiefem Dekubitus",
+      "type": "solution",
+      "result": {
+        "primary": "Prontosan® + feuchte Wundtherapie",
+        "reason": "Granulationsfördernde Wundauflage + regelmäßige Spülung zur Biofilm-Prävention",
+        "application": "Spülung mit Prontosan®, hydroaktive Wundauflage, feuchtes Milieu erhalten",
+        "alternative": "Ringer-Lösung (wenn keine Infektionsgefahr)",
+        "duration": "Bis zur vollständigen Epithelisierung",
+        "frequency": "Alle 2-3 Tage je nach Auflagensystem",
+        "contraindications": [
+          "Druckentlastung 24/7!",
+          "Ernährung optimieren",
+          "Regelmäßige Verlaufskontrolle"
+        ],
+        "color": "from-emerald-500 to-green-600"
+      }
+    },
+    "chronisch_ulcus": {
+      "nodeId": "chronisch_ulcus",
+      "question": "Welche Ätiologie hat das Ulcus cruris?",
+      "type": "condition",
+      "info": "Die Ursache bestimmt die Therapie: Venös → Kompression, Arteriell → Durchblutung, Gemischt → Vorsicht!",
+      "options": [
+        {
+          "label": "Venös",
+          "sublabel": "CVI, Varikosis, 80% der Fälle",
+          "next": "ulcus_venös",
+          "color": "from-blue-500 to-cyan-600"
+        },
+        {
+          "label": "Arteriell/Gemischt",
+          "sublabel": "pAVK, Durchblutungsstörung",
+          "next": "ulcus_arteriell",
+          "color": "from-red-500 to-orange-600"
+        }
+      ]
+    },
+    "ulcus_venös": {
+      "nodeId": "ulcus_venös",
+      "question": "Primäre Empfehlung bei venösem Ulcus cruris",
+      "type": "solution",
+      "result": {
+        "primary": "Prontosan® oder Lavasept® + Kompression!",
+        "reason": "Venöse Ulcera heilen NUR mit adäquater Kompressionstherapie. Antiseptik verhindert Infektion und beschleunigt Heilung.",
+        "application": "Wunde spülen, superabsorbierende Wundauflage, dann IMMER Kompressionsverband/-strumpf (30-40 mmHg)",
+        "alternative": "Octenisept® bei Infektionszeichen",
+        "duration": "Wochen bis Monate",
+        "frequency": "Alle 2-7 Tage je nach Exsudat",
+        "contraindications": [
+          "⚠️ OHNE KOMPRESSION KEINE HEILUNG!",
+          "pAVK ausschließen (ABI-Messung!)",
+          "Bei Infektion: häufigere Verbandwechsel"
+        ],
+        "color": "from-blue-500 to-cyan-600"
+      }
+    },
+    "ulcus_arteriell": {
+      "nodeId": "ulcus_arteriell",
+      "question": "Primäre Empfehlung bei arteriellem Ulcus",
+      "type": "solution",
+      "result": {
+        "primary": "Ringer/NaCl + gefäßchirurgische Abklärung",
+        "reason": "Arterielle Ulcera heilen NICHT ohne Revaskularisation! Antiseptik zurückhaltend, da Durchblutung limitiert ist.",
+        "application": "Vorsichtige Reinigung, KEINE Kompression, feuchte Wundauflage, KEINE hautreizenden Antiseptika",
+        "alternative": "Polihexanid (sehr zurückhaltend bei Infektion)",
+        "duration": "Abhängig von Revaskularisation",
+        "frequency": "Alle 3-7 Tage, Wunde wenig manipulieren",
+        "contraindications": [
+          "⚠️ GEFÄSSCHIRURGIE KONSULTIEREN!",
+          "KEINE Kompression (verschlechtert Durchblutung)",
+          "Vorsicht: Amputation droht bei schlechter Durchblutung",
+          "Risikofaktoren behandeln (Rauchen, Diabetes!)"
+        ],
+        "color": "from-red-500 to-orange-600"
+      }
+    },
+    "chronisch_diabetisch": {
+      "nodeId": "chronisch_diabetisch",
+      "question": "Liegt eine Infektion vor?",
+      "type": "condition",
+      "info": "Diabetische Fußwunden sind hochgradig infektionsgefährdet. Frühzeitige Intervention verhindert Amputation!",
+      "options": [
+        {
+          "label": "Ja, infiziert",
+          "sublabel": "Wichtig: Sofortige Behandlung!",
+          "next": "diabetisch_infiziert",
+          "color": "from-red-600 to-rose-700"
+        },
+        {
+          "label": "Nein, nicht infiziert",
+          "sublabel": "Prophylaktische Behandlung",
+          "next": "diabetisch_sauber",
+          "color": "from-green-500 to-emerald-600"
+        }
+      ]
+    },
+    "diabetisch_infiziert": {
+      "nodeId": "diabetisch_infiziert",
+      "question": "Primäre Empfehlung bei infiziertem diabetischem Fuß",
+      "type": "solution",
+      "result": {
+        "primary": "Octenisept® + systemische Antibiotika + Débridement",
+        "reason": "⚠️ NOTFALL! Diabetische Fußinfektionen können innerhalb von Tagen zur Amputation führen. Aggressive Behandlung nötig!",
+        "application": "Chirurgisches Débridement, intensive Octenisept®-Spülung, spezialisierte Auflagen, systemische AB nach Antibiogramm",
+        "alternative": "Stationäre Behandlung oft erforderlich",
+        "duration": "Bis zur vollständigen Infektionssanierung",
+        "frequency": "Initial täglich, dann nach Befund",
+        "contraindications": [
+          "⚠️ SOFORT zum Diabetologen/Chirurgen!",
+          "Blutzucker-Einstellung KRITISCH",
+          "Druckentlastung absolut (Spezialschuh)",
+          "Röntgen bei Verdacht auf Osteomyelitis",
+          "Bei Sepsis: Notfall-Krankenhauseinweisung!"
+        ],
+        "color": "from-red-600 to-rose-700"
+      }
+    },
+    "diabetisch_sauber": {
+      "nodeId": "diabetisch_sauber",
+      "question": "Primäre Empfehlung bei sauberem diabetischem Fuß",
+      "type": "solution",
+      "result": {
+        "primary": "Prontosan® + strikte Druckentlastung",
+        "reason": "Prävention ist bei Diabetikern alles! Neuropathie verhindert Schmerzwarnung. Regelmäßige professionelle Kontrolle essentiell.",
+        "application": "Regelmäßige Spülung mit Prontosan®, hydroaktive Wundauflage, Druckentlastung mit Spezialschuhwerk",
+        "alternative": "Ringer-Lösung bei sehr sauberer Wunde",
+        "duration": "Oft mehrere Monate",
+        "frequency": "Alle 2-3 Tage, wöchentliche Arztkontrolle",
+        "contraindications": [
+          "Tägliche Fußinspektion durch Patient/Angehörige",
+          "HbA1c optimieren (< 7%)",
+          "Durchblutung prüfen (Pulse, ABI)",
+          "Spezialschuhversorgung",
+          "Bei JEDER Verschlechterung: sofort zum Arzt!"
+        ],
+        "color": "from-green-500 to-emerald-600"
+      }
+    },
+    "biofilm_verdacht": {
+      "nodeId": "biofilm_verdacht",
+      "question": "Verdacht auf Biofilm-Bildung?",
+      "type": "condition",
+      "info": "Biofilme sind bakterielle Schutzschilde, die Wundheilung verhindern. Erkennbar an: Stockende Heilung trotz Therapie, schleimiger Belag.",
+      "options": [
+        {
+          "label": "Ja, Biofilm wahrscheinlich",
+          "sublabel": "Stockende Heilung, schleimiger Belag",
+          "next": "biofilm_behandlung",
+          "color": "from-purple-500 to-violet-600"
+        }
+      ]
+    },
+    "biofilm_behandlung": {
+      "nodeId": "biofilm_behandlung",
+      "question": "Primäre Empfehlung bei Biofilm",
+      "type": "solution",
+      "result": {
+        "primary": "Prontosan® + mechanisches Débridement",
+        "reason": "Polihexanid (PHMB) ist eines der wenigen Antiseptika mit nachgewiesener Biofilm-Wirkung. Kombination mit Débridement essentiell!",
+        "application": "1. Mechanisches Débridement (Ultraschall, Kürettage), 2. Intensive Prontosan®-Spülung (20min Einwirkzeit), 3. Betaisodona® alternierend möglich",
+        "alternative": "Octenilin® Wundgel (längere Kontaktzeit)",
+        "duration": "Mehrere Wochen, bis Biofilm durchbrochen",
+        "frequency": "Initial täglich, dann alle 2-3 Tage",
+        "contraindications": [
+          "Mechanisches Débridement unverzichtbar!",
+          "Geduld: Biofilm-Behandlung dauert lange",
+          "Evtl. ergänzend: Silber-Auflagen"
+        ],
+        "color": "from-purple-500 to-violet-600"
+      }
+    }
+  }
+}

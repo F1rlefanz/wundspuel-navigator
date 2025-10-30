@@ -1,0 +1,248 @@
+# ================================================
+# SICHERE .GITIGNORE FÜR WUNDSPÜL-NAVIGATOR
+# ================================================
+# Erstellt: 30. Oktober 2025
+# Zweck: Schutz sensibler Daten vor GitHub Upload
+# ================================================
+
+# ============================================
+# 🔒 KRITISCH - SENSIBLE PROJEKTDATEIEN
+# ============================================
+# Dieser Ordner enthält:
+# - Urheberrechtlich geschützte PDF-Dokumente
+# - Persönliche Projektnotizen
+# - Interne Dokumentation
+.Projektdateien/
+.Projektdateien/**/*
+
+# ============================================
+# 📦 DEPENDENCIES
+# ============================================
+# Node.js Dependencies (werden durch package.json verwaltet)
+node_modules/
+jspm_packages/
+
+# ============================================
+# 🏗️ BUILD OUTPUT
+# ============================================
+# Build-Artefakte (werden automatisch neu erstellt)
+dist/
+dist-ssr/
+build/
+*.local
+
+# Vite Cache
+.vite/
+vite.config.js.timestamp-*
+
+# ============================================
+# 🔐 ENVIRONMENT & SECRETS
+# ============================================
+# Umgebungsvariablen und Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# API Keys
+*.key
+*.pem
+secrets.json
+
+# ============================================
+# 🖥️ IDE & EDITOR
+# ============================================
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains (WebStorm, IntelliJ)
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Visual Studio
+.vs/
+
+# ============================================
+# 🖱️ OPERATING SYSTEM
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# ============================================
+# 📝 LOGS & DEBUGGING
+# ============================================
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ============================================
+# 🧪 TESTING
+# ============================================
+# Test coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# ============================================
+# 📚 DOCUMENTATION (TEMP FILES)
+# ============================================
+# Temporary documentation files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~.nib
+
+# ============================================
+# 🎨 MEDIA (TEMP/BACKUP)
+# ============================================
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Large media files (only if not needed)
+# *.mp4
+# *.mov
+# *.avi
+
+# ============================================
+# 📦 PACKAGE MANAGERS
+# ============================================
+# Yarn
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# PNPM
+.pnpm-store/
+
+# ============================================
+# 🚀 DEPLOYMENT
+# ============================================
+# Vercel
+.vercel
+
+# Netlify
+.netlify
+
+# ============================================
+# 🔍 MISCELLANEOUS
+# ============================================
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Stores VSCode versions used for testing
+.vscode-test
+
+# Temporary folders
+tmp/
+temp/
+
+# ============================================
+# ✅ ERLAUBT (WICHTIG FÜR PROJEKT!)
+# ============================================
+# Diese Dateien MÜSSEN auf GitHub:
+# - package.json (Dependencies)
+# - package-lock.json (Lock-File)
+# - vite.config.js (Build-Config)
+# - tailwind.config.js (Styling-Config)
+# - postcss.config.js (CSS-Processing)
+# - .eslintrc.json (Code-Quality)
+# - .prettierrc (Code-Formatting)
+# - index.html (Entry-Point)
+# - src/** (Source-Code)
+# - public/** (Static Assets inkl. JSON-Daten)
+# - README.md (Projekt-Beschreibung)
+# - LICENSE (falls vorhanden)
+
+# ============================================
+# 📋 NOTIZEN
+# ============================================
+# Was wird NICHT hochgeladen:
+# ✓ node_modules/ (zu groß, unnötig)
+# ✓ dist/ (wird automatisch gebaut)
+# ✓ .Projektdateien/ (SENSIBEL!)
+# ✓ .env Dateien (Secrets)
+# ✓ IDE-Config (.vscode, .idea)
+# ✓ System-Dateien (.DS_Store, Thumbs.db)
+# ✓ Logs (*.log)
+#
+# Was WIRD hochgeladen:
+# ✓ Source-Code (src/)
+# ✓ Public Assets (public/)
+# ✓ Config-Dateien (*.config.js)
+# ✓ Package-Definitionen (package.json)
+# ✓ Icons & Manifest
+# ✓ README.md
+# ============================================
